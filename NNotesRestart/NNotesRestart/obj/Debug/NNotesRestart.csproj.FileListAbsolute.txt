@@ -16,3 +16,13 @@ D:\Workbench\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.csprojRe
 D:\Workbench\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.Form1.resources
 D:\Workbench\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.Properties.Resources.resources
 D:\Workbench\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.csproj.GenerateResource.Cache
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\bin\Debug\NNotesRestart.exe.config
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\bin\Debug\NNotesRestart.exe
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\bin\Debug\NNotesRestart.pdb
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.csprojAssemblyReference.cache
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.Form1.resources
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.Properties.Resources.resources
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.csproj.GenerateResource.cache
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.csproj.CoreCompileInputs.cache
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.exe
+D:\Development\Visual studio\NNotes\NNotesRestart\NNotesRestart\obj\Debug\NNotesRestart.pdb

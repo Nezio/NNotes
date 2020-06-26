@@ -26,3 +26,18 @@ D:\Workbench\NNotes\NNotes\NNotes\obj\Debug\MainWindow.baml
 D:\Workbench\NNotes\NNotes\NNotes\obj\Debug\NNotes.g.resources
 D:\Workbench\NNotes\NNotes\NNotes\obj\Debug\NNotes.Properties.Resources.resources
 D:\Workbench\NNotes\NNotes\NNotes\obj\Debug\NNotes.csproj.GenerateResource.Cache
+D:\Development\Visual studio\NNotes\NNotes\NNotes\bin\Debug\NNotes.exe.config
+D:\Development\Visual studio\NNotes\NNotes\NNotes\bin\Debug\NNotes.exe
+D:\Development\Visual studio\NNotes\NNotes\NNotes\bin\Debug\NNotes.pdb
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.csprojAssemblyReference.cache
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\MainWindow.g.cs
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\App.g.cs
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes_MarkupCompile.cache
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes_MarkupCompile.lref
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\MainWindow.baml
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.g.resources
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.Properties.Resources.resources
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.csproj.GenerateResource.cache
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.csproj.CoreCompileInputs.cache
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.exe
+D:\Development\Visual studio\NNotes\NNotes\NNotes\obj\Debug\NNotes.pdb

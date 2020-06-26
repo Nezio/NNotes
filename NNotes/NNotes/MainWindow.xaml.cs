@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NNotes
 {
@@ -21,14 +13,11 @@ namespace NNotes
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
-    // make another app to start this exe only if Text.txt is not empty
-    // set that app to run on starup
-
     public partial class MainWindow : Window
     {
         static string localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        //static string localNNotesPath = localPath + "\\NNotes";
-        static string localNNotesPath = localPath + "\\NNotes\\Test";
+        static string localNNotesPath = localPath + "\\NNotes";
+        //static string localNNotesPath = localPath + "\\NNotes\\Test";
         string textFilePath = localNNotesPath + "\\Text.txt";
         string settingsFilePath = localNNotesPath + "\\Settings.txt";
         string darkTheme = "0";
@@ -47,7 +36,7 @@ namespace NNotes
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Directory.CreateDirectory(localNNotesPath);
-           
+
             if (File.Exists(settingsFilePath))
             {
                 StreamReader file = new StreamReader(settingsFilePath);
@@ -102,7 +91,7 @@ namespace NNotes
                     this.DragMove();
             }
             catch { }
-            
+
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
@@ -191,6 +180,6 @@ namespace NNotes
             saveSettings();
         }
 
-        
+
     }
 }
