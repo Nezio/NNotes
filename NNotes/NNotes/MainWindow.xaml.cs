@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace NNotes
 {
@@ -32,7 +33,29 @@ namespace NNotes
 
         public MainWindow()
         {
+
+            if (AnotherInstanceExists())
+            {
+                Application.Current.Shutdown();
+            }
+
             InitializeComponent();
+        }
+
+        public static bool AnotherInstanceExists()
+        {
+            Process currentRunningProcess = Process.GetCurrentProcess();
+            Process[] listOfProcs = Process.GetProcessesByName(currentRunningProcess.ProcessName);
+
+            foreach (Process process in listOfProcs)
+            {
+                if (process.MainModule.FileName == currentRunningProcess.MainModule.FileName && process.Id != currentRunningProcess.Id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
