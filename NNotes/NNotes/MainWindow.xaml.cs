@@ -6,6 +6,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Configuration;
 
 namespace NNotes
 {
@@ -17,6 +18,7 @@ namespace NNotes
     {
         static string localPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         static string localNNotesPath = localPath + "\\NNotes";
+        static string backupFolder = localNNotesPath + "\\backup";
         //static string localNNotesPath = localPath + "\\NNotes\\Test";
         string textFilePath = localNNotesPath + "\\Text.txt";
         string settingsFilePath = localNNotesPath + "\\Settings.txt";
@@ -36,6 +38,7 @@ namespace NNotes
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Directory.CreateDirectory(localNNotesPath);
+            Directory.CreateDirectory(backupFolder);
 
             if (File.Exists(settingsFilePath))
             {
@@ -75,7 +78,8 @@ namespace NNotes
         {
             imageTheme.Visibility = Visibility.Hidden;
 
-            saveText();
+            saveText(textFilePath);
+            UpdateBackups();
             saveSettings();
 
             await Task.Delay(2000);
@@ -96,10 +100,11 @@ namespace NNotes
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            saveText();
+            saveText(textFilePath);
+            UpdateBackups();
         }
 
-        private void saveText()
+        private void saveText(string file)
         {
             string richText = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text;
             try
@@ -107,7 +112,7 @@ namespace NNotes
                 richText = richText.Remove(richText.Length - 2);
             }
             catch { }
-            File.WriteAllText(textFilePath, richText);
+            File.WriteAllText(file, richText);
         }
 
         private void saveSettings()
@@ -178,6 +183,71 @@ namespace NNotes
 
             updateTheme();
             saveSettings();
+        }
+
+        private void UpdateBackups()
+        {
+            int maxBackupFiles = 5;
+            int backupInterval = 1;
+
+            try
+            {
+                maxBackupFiles = Int32.Parse(ConfigurationManager.AppSettings["maxBackupFiles"]);
+                backupInterval = Int32.Parse(ConfigurationManager.AppSettings["backupInterval"]);
+            }
+            catch
+            {
+                MessageBox.Show("Could not load a setting from the app settings config file! Please, check the file!", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            var backupFiles = Directory.GetFiles(backupFolder);
+            bool doBackup = false;
+
+            if(backupFiles.Length > 0)
+            {
+                // compare newest backup date with current time to decide if another backup should be created
+                // 2021-03-29
+                var lastBackupFile = backupFiles[backupFiles.Length - 1];
+                string lastBackupFileName = Path.GetFileNameWithoutExtension(lastBackupFile);
+                string[] lastBackupDateArray = lastBackupFileName.Split('-');
+
+                DateTime lastBackupDateTime;
+
+                try
+                {
+                    lastBackupDateTime = new DateTime(Int32.Parse(lastBackupDateArray[0]), Int32.Parse(lastBackupDateArray[1]), Int32.Parse(lastBackupDateArray[2]));
+                }
+                catch
+                {
+                    // delete the wrongly named file
+                    File.Delete(lastBackupFile);
+
+                    return;
+                }
+
+                var daysFromLastBackup = (DateTime.Now - lastBackupDateTime).TotalDays;
+
+                if(daysFromLastBackup >= backupInterval)
+                {
+                    doBackup = true;
+                }
+
+            }
+
+            if (backupFiles.Length == 0 || doBackup)
+            {
+                // create a new backup
+                string newBackupFileName = DateTime.Now.ToString("yyyy'-'MM'-'dd");
+                string newBackupFilePath = backupFolder + "\\" + newBackupFileName + ".txt";
+
+                saveText(newBackupFilePath);
+            }
+
+            // delete oldest backup file
+            if(backupFiles.Length >= maxBackupFiles)
+            {
+                File.Delete(backupFiles[0]);
+            }
         }
 
 
