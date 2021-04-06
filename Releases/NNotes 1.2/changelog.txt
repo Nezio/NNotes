@@ -1,0 +1,3 @@
+v1.2
+Added backup system - configurable trough "NNotes.exe.config"
+Changed app to be single instance (can only launch one window)
